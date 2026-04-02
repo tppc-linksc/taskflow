@@ -1,0 +1,446 @@
+/* TipTap Editor Wrapper */
+.tiptap-editor-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* Toolbar */
+.tiptap-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px;
+  border-bottom: 1px solid #e8e8e8;
+  background: #fafafa;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+/* Portal Dropdown - renders at body level */
+.dropdown-portal {
+  position: fixed !important;
+  z-index: 9999 !important;
+}
+
+.toolbar-group {
+  display: flex;
+  gap: 2px;
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: all 0.15s;
+  position: relative;
+}
+
+/* 文字颜色按钮 - 底部有颜色指示条 */
+.toolbar-btn-text-color {
+  width: 34px;
+}
+
+.toolbar-btn-text-color .text-color-icon {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.toolbar-btn-text-color .text-color-indicator {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 3px;
+  border-radius: 1px;
+  background: #333;
+}
+
+/* 背景色按钮 - 有明显背景样式 */
+.toolbar-btn-bg-color {
+  width: 34px;
+}
+
+.toolbar-btn-bg-color .bg-color-icon {
+  font-weight: bold;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: #fff3cd;
+  border: 1px solid #ffe58f;
+}
+
+/* 字号按钮 - 显示当前字号 */
+.toolbar-btn-font-size {
+  width: 44px;
+  gap: 2px;
+  font-size: 12px;
+}
+
+.toolbar-btn-font-size .font-size-icon {
+  font-weight: bold;
+  font-size: 14px;
+  font-family: serif;
+}
+
+.toolbar-btn-font-size .font-size-indicator {
+  font-size: 10px;
+  color: #666;
+  font-weight: 500;
+}
+
+.toolbar-btn-font-size.is-active .font-size-indicator {
+  color: #fff;
+}
+
+/* 列表按钮样式 */
+.list-icon {
+  font-size: 16px;
+  color: #666;
+  line-height: 1;
+}
+
+.toolbar-btn:hover .list-icon {
+  color: #333;
+}
+
+.toolbar-btn.is-active .list-icon {
+  color: #fff;
+}
+
+.toolbar-btn:hover {
+  background: #e8e8e8;
+}
+
+.toolbar-btn.is-active {
+  background: #1890ff;
+  color: #fff;
+}
+
+.toolbar-btn.is-active .text-color-indicator {
+  background: #fff;
+}
+
+.toolbar-btn.is-active .bg-color-icon {
+  background: #fff;
+  border-color: #fff;
+}
+
+.toolbar-btn.is-active .font-size-indicator {
+  color: #fff;
+}
+
+.toolbar-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.toolbar-divider {
+  width: 1px;
+  height: 24px;
+  background: #d9d9d9;
+  margin: 0 6px;
+}
+
+/* Toolbar Extra Actions - 返回按钮样式 */
+.toolbar-extra {
+  margin-left: auto;
+}
+
+.toolbar-extra .toolbar-btn {
+  width: auto;
+  min-width: 60px;
+  padding: 0 12px;
+  background: #ffffff;
+  color: #333;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #e8e8e8;
+}
+
+.toolbar-extra .toolbar-btn:hover {
+  background: #f5f5f5;
+}
+
+/* Color Dropdown */
+.color-dropdown-wrapper {
+  position: relative;
+}
+
+.color-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  padding: 6px;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  display: grid;
+  gap: 4px;
+}
+
+.color-dropdown.grid-4col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.color-dropdown.grid-5col {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.color-option {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  transition: all 0.15s;
+}
+
+.color-option:hover {
+  background: #f5f5f5;
+  border-color: #1890ff;
+}
+
+/* Font Size Dropdown */
+.font-size-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  min-width: 100px;
+  padding: 6px;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+}
+
+.font-size-option {
+  width: 100%;
+  height: 32px;
+  padding: 0 12px;
+  font-size: 13px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  transition: all 0.15s;
+  color: #333;
+}
+
+.font-size-option:hover {
+  background: #e6f7ff;
+  color: #1890ff;
+}
+
+.font-size-option.active {
+  background: #1890ff;
+  color: #fff;
+}
+
+/* Title Input */
+.title-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #e8e8e8;
+  background: #fafafa;
+  flex-shrink: 0;
+}
+
+.title-input {
+  flex: 1;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 4px 0;
+  border-bottom: 2px solid #e8e8e8;
+  transition: border-color 0.2s;
+}
+
+.title-input:focus {
+  border-bottom-color: #1890ff;
+}
+
+.title-input::placeholder {
+  color: #bfbfbf;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.title-char-count {
+  font-size: 12px;
+  color: #999;
+  flex-shrink: 0;
+}
+
+/* Editor Content */
+.tiptap-content {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding: 8px 12px;
+  min-height: 0;
+}
+
+.tiptap-editor-content {
+  height: 100%;
+  min-height: 200px;
+  outline: none;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.tiptap-editor-content p {
+  margin: 0 0 8px 0;
+}
+
+.tiptap-editor-content ul,
+.tiptap-editor-content ol {
+  padding-left: 24px;
+  margin: 8px 0;
+}
+
+.tiptap-editor-content li {
+  margin: 4px 0;
+}
+
+/* Task List */
+.tiptap-editor-content ul[data-type="taskList"] {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tiptap-editor-content ul[data-type="taskList"] li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.tiptap-editor-content ul[data-type="taskList"] li > label {
+  margin-top: 2px;
+}
+
+.tiptap-editor-content ul[data-type="taskList"] li > div {
+  flex: 1;
+}
+
+.tiptap-editor-content ul[data-type="taskList"] input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #1890ff;
+}
+
+/* Table */
+.tiptap-editor-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.tiptap-editor-content th,
+.tiptap-editor-content td {
+  border: 1px solid #d9d9d9;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.tiptap-editor-content th {
+  background: #fafafa;
+  font-weight: 600;
+}
+
+/* Image */
+.tiptap-editor-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 8px 0;
+}
+
+.tiptap-editor-content img.ProseMirror-selectednode {
+  outline: 2px solid #1890ff;
+}
+
+/* Link */
+.tiptap-editor-content a {
+  color: #1890ff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Placeholder */
+.tiptap-editor-content p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #bfbfbf;
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Highlight */
+.tiptap-editor-content mark {
+  background-color: #fff3cd;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* Code */
+.tiptap-editor-content code {
+  background: #f5f5f5;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+/* Blockquote */
+.tiptap-editor-content blockquote {
+  border-left: 3px solid #d9d9d9;
+  padding-left: 16px;
+  margin-left: 0;
+  color: #666;
+}
+
+/* Horizontal Rule */
+.tiptap-editor-content hr {
+  border: none;
+  border-top: 1px solid #d9d9d9;
+  margin: 16px 0;
+}
+

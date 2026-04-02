@@ -1,0 +1,79 @@
+.memo-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #1890ff;
+}
+
+.search-box input::placeholder {
+  color: #999999;
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #999999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-left: 4px;
+}
+
+.sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #666666;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.sidebar-btn:hover {
+  background: #f8f9fa;
+  color: #1a1a1a;
+}
+
+.sidebar-btn.active {
+  background: #1890ff;
+  color: white;
+}
+
+.sidebar-btn .count {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.sidebar-btn.active .count {
+  opacity: 0.9;
+}
